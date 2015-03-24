@@ -494,7 +494,7 @@ endf
 " ---------------------------------------------------------------------------
 func! vundle#installer#shellesc_cd(cmd) abort
   if ((has('win32') || has('win64')) && empty(matchstr(&shell, 'sh')))
-    let cmd = substitute(a:cmd, '^cd ','cd /d ','')  " add /d switch to change drives
+    let cmd = '(' . substitute(a:cmd, '^cd ','cd /d ','') . ')'  " add /d switch to change drives
     return cmd
   else
     return a:cmd
